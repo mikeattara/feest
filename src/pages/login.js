@@ -1,8 +1,8 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { login } from "store/user/user-actions";
+import { login } from "store/user/userActions";
 
 const initialForm = {
   username: "",
@@ -10,11 +10,16 @@ const initialForm = {
 };
 
 const Login = () => {
+  const { state } = useLocation();
   const history = useHistory();
   const dispatch = useDispatch();
 
+  const redirect = () => {
+    history.push(state.from);
+  };
+
   const handleSubmit = (values, actions) => {
-    dispatch(login(values, history));
+    dispatch(login(values, redirect));
   };
 
   return (

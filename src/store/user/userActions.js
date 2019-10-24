@@ -8,24 +8,24 @@ const updateUser = user => ({
   payload: user
 });
 
-export const login = (user, history) => dispatch => {
+export const login = (user, redirect) => dispatch => {
   axios
     .post("/users/login", user)
     .then(({ data }) => {
       dispatch(updateUser(data));
       localStorage.setItem("token", data.token);
-      history.push("/success");
+      redirect();
     })
     .catch(error => {
       console.error(error.message);
     });
 };
 
-export const register = (user, history) => dispatch => {
+export const register = (user, redirect) => dispatch => {
   axios
     .post("/users/register", user)
     .then(res => {
-      history.push("/login");
+      redirect();
     })
     .catch(error => {
       console.error(error);

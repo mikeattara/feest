@@ -2,7 +2,7 @@ import React from "react";
 import { Formik, Form, Field } from "formik";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { register } from "store/user/user-actions";
+import { register } from "store/user/userActions";
 
 const initialForm = {
   username: "",
@@ -15,8 +15,12 @@ const Register = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
+  const redirect = () => {
+    history.push("/login");
+  };
+
   const handleSubmit = (values, actions) => {
-    dispatch(register(values, history));
+    dispatch(register(values, redirect));
   };
 
   return (
