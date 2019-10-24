@@ -1,6 +1,6 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
-import { useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "store/user/user-actions";
 
@@ -10,23 +10,23 @@ const initialForm = {
 };
 
 const Login = () => {
-  const location = useLocation();
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
-    dispatch(login(values, location));
+    dispatch(login(values, history));
   };
 
   return (
     <div>
-      <h1>My Form</h1>
+      <h1>Login</h1>
       <Formik
         initialValues={initialForm}
         onSubmit={handleSubmit}
         render={props => (
           <Form>
             <label>
-              Username: <Field type="text" name="name" />
+              Username: <Field type="text" name="username" />
             </label>
             <label>
               Password: <Field type="password" name="password" />
