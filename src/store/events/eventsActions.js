@@ -9,9 +9,9 @@ const updateEvents = events => ({
 export const fetchEvents = () => dispatch => {
   const id = localStorage.getItem("id");
   axiosWithAuth()
-    .get(`/users/${id}/events`)
+    .get(`/api/users/${id}/events`)
     .then(({ data }) => {
-      dispatch(updateEvents(data));
+      dispatch(updateEvents(data.events));
     })
     .catch(error => {
       console.error(error);
