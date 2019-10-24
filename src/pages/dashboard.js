@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchEvents } from "store/events/eventsActions";
 
 const Dashboard = () => {
-  return <div>WELCOME TO THE DASHBOARD</div>;
+  const dispatch = useDispatch();
+  const events = useSelector(state => state.events);
+
+  useEffect(() => {
+    dispatch(fetchEvents());
+  }, []);
+
+  return (
+    <div>
+      <h1>WELCOME TO THE DASHBOARD</h1>
+      <p>{JSON.stringify(events)}</p>
+    </div>
+  );
 };
 
 export default Dashboard;

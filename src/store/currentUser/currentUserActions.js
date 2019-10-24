@@ -14,6 +14,7 @@ export const login = (user, redirect) => dispatch => {
     .then(({ data }) => {
       dispatch(updateUser(data));
       localStorage.setItem("token", data.token);
+      localStorage.setItem("userId", data.user_id);
       redirect();
     })
     .catch(error => {
