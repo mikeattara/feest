@@ -2,7 +2,7 @@ import React from "react";
 import { Formik, Form, Field } from "formik";
 import { useHistory, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { login } from "store/user/userActions";
+import { login } from "store/currentUser/currentUserActions";
 
 const initialForm = {
   username: "",

@@ -4,7 +4,7 @@ import * as types from "store/types";
 axios.defaults.baseURL = "https://potluck-planner-bw.herokuapp.com";
 
 const updateUser = user => ({
-  type: types.UPDATE_USER,
+  type: types.UPDATE_CURRENT_USER,
   payload: user
 });
 

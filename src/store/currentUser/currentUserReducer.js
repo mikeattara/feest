@@ -5,10 +5,10 @@ const initialUser = {
   id: null
 };
 
-const userReducer = (user = initialUser, action) => {
+export const currentUserReducer = (user = initialUser, action) => {
   const { type, payload } = action;
   switch (type) {
-    case types.UPDATE_USER:
+    case types.UPDATE_CURRENT_USER:
       return {
         token: payload.token,
         id: payload.user_id
@@ -17,5 +17,3 @@ const userReducer = (user = initialUser, action) => {
       return user;
   }
 };
-
-export default userReducer;

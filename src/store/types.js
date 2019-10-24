@@ -1,1 +1,4 @@
-export const UPDATE_USER = "UPDATE_USER";
+export const UPDATE_USERS = "UPDATE_USERS";
+export const UPDATE_CURRENT_USER = "UPDATE_CURRENT_USER";
+export const UPDATE_GUESTS = "UPDATE_GUESTS";
+export const UPDATE_EVENTS = "UPDATE_EVENTS";
