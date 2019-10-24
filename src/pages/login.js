@@ -15,7 +15,8 @@ const Login = () => {
   const dispatch = useDispatch();
 
   const redirect = () => {
-    history.push(state.from);
+    const link = state ? state.from : "/";
+    history.push(link);
   };
 
   const handleSubmit = (values, actions) => {
