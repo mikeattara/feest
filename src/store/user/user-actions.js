@@ -1,16 +1,19 @@
 import axios from "axios";
 import * as types from "store/types";
 
+axios.defaults.baseURL = "https://potluck-planner-bw.herokuapp.com";
+
 const updateUser = user => ({
   type: types.UPDATE_USER,
   payload: user
 });
 
-export const login = (username, password) => dispatch => {
+export const login = (user, location) => dispatch => {
   axios
-    .post("/users/login", { username, password })
+    .post("/users/login", user)
     .then(({ data }) => {
       dispatch(updateUser(data));
+      location.push("/");
     })
     .catch(error => {
       console.error(error.message);
