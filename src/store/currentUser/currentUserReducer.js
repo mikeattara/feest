@@ -1,8 +1,8 @@
 import * as types from "store/types";
 
 const initialUser = {
-  token: null,
-  id: null
+  token: localStorage.getItem("token"),
+  id: localStorage.getItem("id")
 };
 
 export const currentUserReducer = (user = initialUser, action) => {
@@ -11,7 +11,7 @@ export const currentUserReducer = (user = initialUser, action) => {
     case types.UPDATE_CURRENT_USER:
       return {
         token: payload.token,
-        id: payload.user_id
+        id: payload.id
       };
     default:
       return user;

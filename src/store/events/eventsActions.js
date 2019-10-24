@@ -7,7 +7,7 @@ const updateEvents = events => ({
 });
 
 export const fetchEvents = () => dispatch => {
-  const id = localStorage.getItem("userId");
+  const id = localStorage.getItem("id");
   axiosWithAuth()
     .get(`/users/${id}/events`)
     .then(({ data }) => {

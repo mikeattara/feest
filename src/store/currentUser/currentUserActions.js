@@ -1,7 +1,7 @@
 import axios from "axios";
 import * as types from "store/types";
 
-axios.defaults.baseURL = "https://potluck-planner-bw.herokuapp.com";
+axios.defaults.baseURL = "https://potluck-backend.herokuapp.com";
 
 const updateUser = user => ({
   type: types.UPDATE_CURRENT_USER,
@@ -10,11 +10,13 @@ const updateUser = user => ({
 
 export const login = (user, redirect) => dispatch => {
   axios
-    .post("/users/login", user)
+    .post("/api/auth/login", user)
     .then(({ data }) => {
-      dispatch(updateUser(data));
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("userId", data.user_id);
+      const { id, token } = data;
+      console.log(data);
+      dispatch(updateUser({ id, token }));
+      localStorage.setItem("token", token);
+      localStorage.setItem("id", id);
       redirect();
     })
     .catch(error => {
@@ -24,7 +26,7 @@ export const login = (user, redirect) => dispatch => {
 
 export const register = (user, redirect) => dispatch => {
   axios
-    .post("/users/register", user)
+    .post("/api/auth/register", user)
     .then(res => {
       redirect();
     })

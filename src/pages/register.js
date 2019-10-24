@@ -7,8 +7,7 @@ import { register } from "store/currentUser/currentUserActions";
 const initialForm = {
   username: "",
   password: "",
-  email: "",
-  full_name: ""
+  email: ""
 };
 
 const Register = () => {
@@ -36,9 +35,6 @@ const Register = () => {
             </label>
             <label>
               Password: <Field type="password" name="password" />
-            </label>
-            <label>
-              Full name: <Field type="text" name="full_name" />
             </label>
             <label>
               Email: <Field type="text" name="email" />

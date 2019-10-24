@@ -7,6 +7,6 @@ export const axiosWithAuth = () => {
       "Content-Type": "application/json",
       Authorization: token
     },
-    baseURL: "https://potluck-planner-bw.herokuapp.com"
+    baseURL: "https://potluck-backend.herokuapp.com"
   });
 };
