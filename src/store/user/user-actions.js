@@ -1,5 +1,5 @@
+import axios from "axios";
 import * as types from "store/types";
-import { axiosWithAuth } from "utitlities/auth";
 
 const updateUser = user => ({
   type: types.UPDATE_USER,
@@ -7,12 +7,23 @@ const updateUser = user => ({
 });
 
 export const login = (username, password) => dispatch => {
-  axiosWithAuth()
+  axios
     .post("/users/login", { username, password })
     .then(({ data }) => {
       dispatch(updateUser(data));
     })
     .catch(error => {
       console.error(error.message);
+    });
+};
+
+export const register = (user, location) => dispatch => {
+  axios
+    .post("/users/register", user)
+    .then(res => {
+      location.push("/login");
+    })
+    .catch(error => {
+      console.error(error);
     });
 };
