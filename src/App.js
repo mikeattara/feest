@@ -6,7 +6,7 @@ import Register from "pages/Register";
 import Dashboard from "pages/Dashboard";
 import PrivateRoute from "components/PrivateRoute";
 
-function App() {
+const App = () => {
   return (
     <Switch>
       <PrivateRoute exact path="/" component={Dashboard} />
@@ -15,6 +15,6 @@ function App() {
       <Redirect to="/register" />
     </Switch>
   );
-}
+};
 
 export default App;
